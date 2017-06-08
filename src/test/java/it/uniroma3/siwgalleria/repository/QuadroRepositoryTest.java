@@ -1,6 +1,8 @@
 package it.uniroma3.siwgalleria.repository;
 
+import it.uniroma3.siwgalleria.domain.Autore;
 import it.uniroma3.siwgalleria.domain.Quadro;
+import it.uniroma3.siwgalleria.persistence.repository.AutoreRepository;
 import it.uniroma3.siwgalleria.persistence.repository.QuadroRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,12 +20,25 @@ import static org.junit.Assert.assertTrue;
 public class QuadroRepositoryTest {
 
     @Autowired
-    QuadroRepository repository;
+    QuadroRepository quadroRepository;
+
+    @Autowired
+    AutoreRepository autoreRepository;
 
     @Test
     public void saveTest_inserimentoQuadroNelREpository() {
-        repository.save(new Quadro());
-        assertTrue(repository.findAll().size() >= 1);
+        Quadro quadro = new Quadro();
+        quadro.setNome("Quadro Di Test");
+
+        Autore autore = new Autore();
+        autore.setNome("Nome autore di test");
+        autore.setCognome("mannaggia a jerin e ai suoi constraint sul cognome");
+
+        autoreRepository.save(autore);
+        quadro.setAutore(autore);
+
+        quadroRepository.save(quadro);
+        assertTrue(quadroRepository.findAll().size() >= 1);
     }
 
 }
