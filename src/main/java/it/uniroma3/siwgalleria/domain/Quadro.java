@@ -14,6 +14,8 @@ public class Quadro {
     private double larghezza;
     @ManyToOne
     private Autore autore;
+    @OneToOne
+    private Tecnica tecnica;
 
     public Quadro(){}
 
@@ -48,5 +50,13 @@ public class Quadro {
 
     public void setLarghezza(double larghezza) {
         this.larghezza = larghezza;
+    }
+
+    public Tecnica getTecnica() {
+        return tecnica;
+    }
+
+    public void setTecnica(Tecnica tecnica) {
+        this.tecnica = tecnica;
     }
 }

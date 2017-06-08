@@ -9,6 +9,8 @@ public class Nazione {
     private long id;
     @Column
     private String nomeNazione;
+    @ManyToOne
+    private Nazione nazione;
 
     public Nazione() {
     }
@@ -23,5 +25,13 @@ public class Nazione {
 
     public void setNomeNazione(String nomeNazione) {
         this.nomeNazione = nomeNazione;
+    }
+
+    public Nazione getNazione() {
+        return nazione;
+    }
+
+    public void setNazione(Nazione nazione) {
+        this.nazione = nazione;
     }
 }
