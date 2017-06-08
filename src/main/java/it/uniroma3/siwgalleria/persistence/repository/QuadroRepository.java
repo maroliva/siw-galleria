@@ -13,4 +13,7 @@ public interface QuadroRepository extends CrudRepository<Quadro, Long> {
     Quadro save(Quadro entity);
 
     List<Quadro> findAll();
+
+    void removeQuadroById(long id);
+
 }

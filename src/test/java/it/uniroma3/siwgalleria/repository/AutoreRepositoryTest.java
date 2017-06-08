@@ -1,9 +1,7 @@
 package it.uniroma3.siwgalleria.repository;
 
 import it.uniroma3.siwgalleria.domain.Autore;
-import it.uniroma3.siwgalleria.domain.Quadro;
 import it.uniroma3.siwgalleria.persistence.repository.AutoreRepository;
-import it.uniroma3.siwgalleria.persistence.repository.QuadroRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,30 +13,24 @@ import static org.junit.Assert.assertTrue;
 /**
  * Created by marco on 08/06/2017.
  */
-@RunWith(SpringRunner.class)
 @SpringBootTest
-public class QuadroRepositoryTest {
+@RunWith(SpringRunner.class)
+public class AutoreRepositoryTest {
+
 
     @Autowired
-    QuadroRepository quadroRepository;
-
-    @Autowired
-    AutoreRepository autoreRepository;
+    private AutoreRepository repository;
 
     @Test
-    public void saveTest_inserimentoQuadroNelREpository() {
-        Quadro quadro = new Quadro();
-        quadro.setNome("Quadro Di Test");
-
+    public void saveTest_inserimentoDinUnAutore() {
         Autore autore = new Autore();
         autore.setNome("NomeTest");
         autore.setCognome("CognomeTest");
 
-        autoreRepository.save(autore);
-        quadro.setAutore(autore);
+        repository.save(autore);
 
-        quadroRepository.save(quadro);
-        assertTrue(quadroRepository.findAll().size() >= 1);
+        assertTrue(repository.findAll().size() >= 1);
     }
+
 
 }
