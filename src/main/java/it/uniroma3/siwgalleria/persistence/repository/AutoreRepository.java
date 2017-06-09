@@ -15,4 +15,5 @@ public interface AutoreRepository  extends CrudRepository<Autore, Long> {
     List<Autore> findAll();
 
     void removeAutoreById(long id);
+
 }

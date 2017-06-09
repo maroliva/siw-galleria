@@ -1,4 +1,4 @@
-package it.uniroma3.siwgalleria.repository;
+package it.uniroma3.siwgalleria.persistence.repository;
 
 import it.uniroma3.siwgalleria.domain.Autore;
 import it.uniroma3.siwgalleria.domain.Quadro;
@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -38,7 +39,24 @@ public class QuadroRepositoryTest {
         quadro.setAutore(autore);
 
         quadroRepository.save(quadro);
-        assertTrue(quadroRepository.findAll().size() >= 1);
+        assertNotNull(quadroRepository.findByNome("Quadro Di Test"));
     }
+
+
+    @Test
+    public void saveTest_inserimentoQuadroNelRepository_senzaAggiungerePrimaIlSuoAutore_testCascade() {
+        Quadro quadro = new Quadro();
+        quadro.setNome("testCascade");
+
+        Autore autore = new Autore();
+        autore.setNome("nomeCascade");
+        autore.setCognome("cognomeCascade");
+
+        quadro.setAutore(autore);
+        quadroRepository.save(quadro);
+
+        assertNotNull(quadroRepository.findByNome("testCascade"));
+    }
+
 
 }

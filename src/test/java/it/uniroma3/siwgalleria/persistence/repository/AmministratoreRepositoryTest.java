@@ -1,4 +1,4 @@
-package it.uniroma3.siwgalleria.repository;
+package it.uniroma3.siwgalleria.persistence.repository;
 
 import it.uniroma3.siwgalleria.domain.Amministratore;
 import it.uniroma3.siwgalleria.persistence.repository.AmministratoreRepository;
@@ -24,7 +24,7 @@ public class AmministratoreRepositoryTest {
     public void saveTest_inserimentoDinUnAmministratore() {
         Amministratore amministratore = new Amministratore();
         amministratore.setUsername("NomeTest");
-        amministratore.setPassword("CognomeTest");
+        amministratore.setPassword("PasswordTest");
 
         repository.save(amministratore);
 

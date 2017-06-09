@@ -16,5 +16,5 @@ public interface AmministratoreRepository extends CrudRepository<Amministratore,
 
     void removeAmministratoreById(long id);
 
-
+    Amministratore findByUsername(String username);
 }
