@@ -7,8 +7,7 @@
 <body>
 <form action="#" th:action="@{/mostraQuadro}" th:object="${quadro}" method="post">
 
-    Titolo:<input type="text" th:field="*{titolo}" value="Titolo default" />
-
+    Titolo:<input type="text" th:field="*{nome}" value="Titolo default" />
     Anno:<input type="text" th:field="*{anno}" value="Anno default" />
     <p><input type="submit" value="Invia" /> <input type="reset" value="Reimposta" /></p>
 </form>
