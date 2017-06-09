@@ -1,6 +1,7 @@
 package it.uniroma3.siwgalleria.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
@@ -14,8 +15,4 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/inserimentoQuadro")
-    public String inserisciQuadro() {
-        return "inserimentoQuadro";
-    }
 }
