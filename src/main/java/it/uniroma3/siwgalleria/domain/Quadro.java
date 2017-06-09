@@ -52,15 +52,14 @@ public class Quadro {
         this.larghezza = larghezza;
     }
 
-<<<<<<<<< Temporary merge branch 1
     public Tecnica getTecnica() {
         return tecnica;
     }
 
     public void setTecnica(Tecnica tecnica) {
         this.tecnica = tecnica;
-=========
-    public void setId(long id) {
+    }
+        public void setId(long id) {
         this.id = id;
     }
 
@@ -70,6 +69,5 @@ public class Quadro {
 
     public void setAutore(Autore autore) {
         this.autore = autore;
->>>>>>>>> Temporary merge branch 2
     }
 }

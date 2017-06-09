@@ -20,6 +20,8 @@ public class Autore {
     private Date dataDiMorte;
     @OneToMany(mappedBy = "autore")
     private List<Quadro> quadri;
+    @ManyToOne
+    private Nazione nazione;
 
     public Autore(){
         this.quadri=new ArrayList<>();
@@ -63,10 +65,11 @@ public class Autore {
     }
 
     public void setNazione(Nazione nazione) {
-
+        this.nazione=nazione;
     }
 
     public Nazione getNazione() {
-        return null;
+        return this.nazione;
     }
+
 }
