@@ -13,4 +13,9 @@ public class HomeController {
     public String index() {
         return "index";
     }
+
+    @GetMapping("/inserimentoQuadro")
+    public String inserisciQuadro() {
+        return "inserimentoQuadro";
+    }
 }

@@ -7,10 +7,7 @@ public class Nazione {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Column
     private String nomeNazione;
-    @ManyToOne
-    private Nazione nazione;
 
     public Nazione() {
     }
@@ -27,11 +24,4 @@ public class Nazione {
         this.nomeNazione = nomeNazione;
     }
 
-    public Nazione getNazione() {
-        return nazione;
-    }
-
-    public void setNazione(Nazione nazione) {
-        this.nazione = nazione;
-    }
 }

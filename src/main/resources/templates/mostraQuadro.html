@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>mostraQuadro</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Quadro inserito</h1>
+<p th:text="'titolo: ' + ${quadro.titolo}" ></p>
+<p th:text="'anno: ' + ${quadro.anno}" />
+<a href="/inserisciQuadro">Inserisci un nuovo quadro</a>
+</body>
+</html>
