@@ -61,4 +61,12 @@ public class Autore {
     public void setDataDiMorte(Date dataDiMorte) {
         this.dataDiMorte = dataDiMorte;
     }
+
+    public void setNazione(Nazione nazione) {
+
+    }
+
+    public Nazione getNazione() {
+        return null;
+    }
 }
