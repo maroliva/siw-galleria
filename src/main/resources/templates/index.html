@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <title>Index Con boostrap</title>
+    <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
+    <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+
 </head>
 <body>
-    <h1>Hello, world!</h1>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Hello, bootstrap!</h1>
+        </div>
+    </div>
 </body>
 </html>
