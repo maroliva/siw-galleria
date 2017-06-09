@@ -6,8 +6,8 @@
 </head>
 <body>
 <h1>Quadro inserito</h1>
-<p th:text="'titolo: ' + ${quadro.nome}" ></p>
-<p th:text="'anno: ' + ${quadro.anno}" />
-<a href="/inserisciQuadro">Inserisci un nuovo quadro</a>
+<p th:text="${quadro.nome}" ></p>
+<p th:text="${quadro.anno}" />
+<a th:href="@{/CrudOP/inserimentoQuadro}">Inserisci un nuovo quadro</a>
 </body>
 </html>

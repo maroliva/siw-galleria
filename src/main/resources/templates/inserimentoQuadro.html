@@ -5,7 +5,7 @@
     <title>Inserisci quadro</title>
 </head>
 <body>
-<form action="#" th:action="@{/mostraQuadro}" th:object="${quadro}" method="post">
+<form action="#" th:action="@{/CrudOP/mostraQuadro}" th:object="${quadro}" method="post">
 
     Titolo:<input type="text" th:field="*{nome}" value="Titolo default" />
     Anno:<input type="text" th:field="*{anno}" value="Anno default" />
