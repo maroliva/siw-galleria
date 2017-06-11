@@ -18,4 +18,6 @@ public interface QuadroRepository extends CrudRepository<Quadro, Long> {
 
     Quadro findByNome(String nome);
 
+    Quadro findById(Long id);
+
 }
