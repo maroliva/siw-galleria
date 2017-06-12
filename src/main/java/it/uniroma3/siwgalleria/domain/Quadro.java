@@ -1,14 +1,16 @@
 package it.uniroma3.siwgalleria.domain;
-
+import org.hibernate.validator.constraints.NotBlank;
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 
 @Entity
 public class Quadro {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
-    @Column(nullable=false)
+    @NotBlank
     private String nome;
+    @Min(1) //valutare poi se cambiare il valore di @Min
     private int anno;
     private double altezza;
     private double larghezza;

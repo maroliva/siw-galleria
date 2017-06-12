@@ -1,33 +1,31 @@
 package it.uniroma3.siwgalleria.controller;
-
 import it.uniroma3.siwgalleria.domain.Quadro;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import javax.validation.Valid;
 
 /**
  * Created by jerongeorge on 09/06/17.
  */
 @Controller
-@RequestMapping("/CrudOP")
+@RequestMapping("/painting")
 public class QuadroController {
 
-    @GetMapping("/inserimentoQuadro")
-    public String formQuadro(Model model){
-        model.addAttribute("quadro", new Quadro());
+
+    @GetMapping("/inserisciQuadro")
+    public String formQuadro(Quadro quadro){
         return "inserimentoQuadro";
     }
 
-    @PostMapping("/mostraQuadro")
-    public String mostraQuadro(@ModelAttribute Quadro quadro){
+    @PostMapping("/inserisciQuadro")
+    public String mostraQuadro(@Valid Quadro quadro, BindingResult bindingResult){
+        if(bindingResult.hasErrors())
+            return "inserimentoQuadro";
         return "mostraQuadro";
     }
 
-    @GetMapping("/")
-    public String index() {
-        return "index";
-    }
+
 }
