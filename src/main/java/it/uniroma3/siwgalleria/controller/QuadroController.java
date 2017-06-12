@@ -17,6 +17,7 @@ public class QuadroController {
 
     @GetMapping("/inserisciQuadro")
     public String formQuadro(Quadro quadro){
+        //inserire la lista delle tecniche e degli autori
         return "inserimentoQuadro";
     }
 
@@ -24,6 +25,8 @@ public class QuadroController {
     public String mostraQuadro(@Valid Quadro quadro, BindingResult bindingResult){
         if(bindingResult.hasErrors())
             return "inserimentoQuadro";
+        //save del quadro del DB
+        //fare eventualmente una redirect del mostraDati
         return "mostraQuadro";
     }
 

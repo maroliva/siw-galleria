@@ -9,6 +9,7 @@ public class Quadro {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
     @NotBlank
+    @Column(nullable=false)
     private String nome;
     @Min(1) //valutare poi se cambiare il valore di @Min
     private int anno;
@@ -24,6 +25,11 @@ public class Quadro {
     public long getId() {
         return id;
     }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -31,6 +37,7 @@ public class Quadro {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
     public int getAnno() {
         return anno;
     }
@@ -38,6 +45,7 @@ public class Quadro {
     public void setAnno(int anno) {
         this.anno = anno;
     }
+
     public double getAltezza() {
         return altezza;
     }
@@ -60,9 +68,6 @@ public class Quadro {
 
     public void setTecnica(Tecnica tecnica) {
         this.tecnica = tecnica;
-    }
-        public void setId(long id) {
-        this.id = id;
     }
 
     public Autore getAutore() {
