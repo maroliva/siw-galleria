@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        jQuery.ajax({
+            url: "/api/quadri",
+            type: "GET",
+
+            contentType: 'application/json; charset=utf-8',
+            success: function(resultData) {
+                var listaQuadri = document.getElementById('lQ');
+                $each(resultData.data, function (k, v) {
+                    var entry = document.createElement('li');
+                    entry.appendChild(document.createTextNode(v.titolo));
+                    listaQuadri.appendChild(entry);
+                })
+
+
+            },
+            error : function(jqXHR, textStatus, errorThrown) {
+            },
+
+            timeout: 120000,
+        });
+    </script>
+</head>
+<body>
+<h1>home</h1>
+<div class="container" id="lQ">
+    <h2>Basic List Group</h2>
+    <ul class="list-group">
+
+    </ul>
+</div>
+
+</body>
+</html>

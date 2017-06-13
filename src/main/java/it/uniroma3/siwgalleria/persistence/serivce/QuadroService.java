@@ -18,6 +18,14 @@ public class QuadroService {
     @Autowired
     QuadroRepository repository;
 
+    //TODO da eliminare è solo per un test
+    @Autowired
+    AutoreRepository autoreRepository;
+
+    public QuadroService() {
+    }
+
+
     public List<Quadro> findAll() {
         return repository.findAll();
     }
@@ -27,5 +35,18 @@ public class QuadroService {
     }
 
 
-    public QuadroService() {}
+    public void addQuadroTest() {
+
+        Quadro quadro = new Quadro();
+        quadro.setNome("Quadro Di Test");
+
+        Autore autore = new Autore();
+        autore.setNome("NomeTest");
+        autore.setCognome("CognomeTest");
+
+        autoreRepository.save(autore);
+        quadro.setAutore(autore);
+
+        repository.save(quadro);
+    }
 }
