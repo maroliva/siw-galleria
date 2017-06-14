@@ -39,6 +39,7 @@ public class QuadroService {
 
         Quadro quadro = new Quadro();
         quadro.setNome("Quadro Di Test");
+        quadro.setAnno(10);
 
         Autore autore = new Autore();
         autore.setNome("NomeTest");
