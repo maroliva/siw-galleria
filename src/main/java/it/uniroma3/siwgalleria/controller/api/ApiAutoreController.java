@@ -1,7 +1,7 @@
 package it.uniroma3.siwgalleria.controller.api;
 
 import it.uniroma3.siwgalleria.domain.Autore;
-import it.uniroma3.siwgalleria.persistence.serivce.AutoreService;
+import it.uniroma3.siwgalleria.persistence.service.AutoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

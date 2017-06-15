@@ -1,7 +1,7 @@
 package it.uniroma3.siwgalleria.controller.api;
 
 import it.uniroma3.siwgalleria.domain.Quadro;
-import it.uniroma3.siwgalleria.persistence.serivce.QuadroService;
+import it.uniroma3.siwgalleria.persistence.service.QuadroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

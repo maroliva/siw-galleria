@@ -2,10 +2,11 @@
  * Created by marco on 12/06/2017.
  */
 
-/**Test ajax*/
-function updateList() {
-
-    var $quadri = $('#quadri');
+/**
+ * Crea uno spazio per ogni immagine
+ */
+function loadGallery() {
+    var $quadri = $('#gallery_id');
 
     jQuery.ajax({
         url: "/api/quadri",
@@ -13,7 +14,12 @@ function updateList() {
         success: function(resultData) {
             $.each(resultData, function (k,v) {
                 console.log("quadro:" + v.nome);
-                $quadri.append('<li> Titolo: ' + v.nome + '</li>');
+                $quadri.append('' +
+                    '<div class="col-lg-3 col-md-4 col-xs-6 thumb">' +
+                    '<a class="thumbnail" role="button" href="#myModal" data-toggle="modal" id="'+ v.id +'">' *
+                    '<img class="img-responsive" src="http://placehold.it/400x300" alt=""/>' *
+                    '</a>' *
+                    '</div>');
             })
         },
         error: function(jqXHR, textStatus, errorThrown) {
