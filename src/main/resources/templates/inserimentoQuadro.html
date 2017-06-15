@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8"/>
     <title>Inserisci quadro</title>
@@ -38,6 +38,24 @@
                 <input class="form-control" type="text" name="larghezza" th:field="*{larghezza}" />
             </div>
             <div class="col-sm-2" th:if="${#fields.hasErrors('larghezza')}" th:errors="*{larghezza}">Error larghezza</div>
+        </div>
+        <div class="form-group col-sm-12">
+            <label class="col-sm-2 control-label">Autori:</label>
+            <div class="col-sm-8">
+                <select th:field="*{autore}" class="form-control" name="autore">
+                    <option th:each="autore : ${autori}" th:value="${autore.id}" th:text="${autore.nome + ' ' + autore.cognome}"></option>
+                </select>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+        <div class="form-group col-sm-12">
+            <label class="col-sm-2 control-label">Tecniche:</label>
+            <div class="col-sm-8">
+                <select th:field="*{tecnica}" class="form-control" name="tecnica">
+                    <option th:each="tecnica : ${tecniche}" th:value="${tecnica.id}" th:text="${tecnica.nome}"></option>
+                </select>
+            </div>
+            <div class="col-sm-2"></div>
         </div>
         <div class="form-group col-sm-12">
             <div class="col-sm-offset-2 col-sm-1">

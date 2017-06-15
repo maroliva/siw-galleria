@@ -27,6 +27,9 @@ public class Autore {
         this.quadri=new ArrayList<>();
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public long getId() {
         return id;
@@ -71,5 +74,4 @@ public class Autore {
     public Nazione getNazione() {
         return this.nazione;
     }
-
 }

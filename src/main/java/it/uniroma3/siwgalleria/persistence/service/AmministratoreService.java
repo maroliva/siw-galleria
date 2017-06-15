@@ -1,4 +1,4 @@
-package it.uniroma3.siwgalleria.persistence.serivce;
+package it.uniroma3.siwgalleria.persistence.service;
 
 import it.uniroma3.siwgalleria.domain.Amministratore;
 import it.uniroma3.siwgalleria.persistence.repository.AmministratoreRepository;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class AmministratoreService {
 
     @Autowired
-    AmministratoreRepository repository;
+    private AmministratoreRepository repository;
 
     public AmministratoreService() {
     }
