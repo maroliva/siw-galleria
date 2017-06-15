@@ -2,7 +2,7 @@
  * Created by marco on 12/06/2017.
  */
 
-
+/**Test ajax*/
 function updateList() {
 
     var $quadri = $('#quadri');
@@ -23,19 +23,21 @@ function updateList() {
     });
 }
 
-
+/**
+ * Carica le immagini nella gallery
+ */
 function loadImages() {
 
 }
 
+/**
+ * Scarica le informazioni da mettere nella modal
+ * @param imageId
+ */
 function onImageClicked(imageId) {
-
+    
 }
 
 function onSearch() {
     console.log("Searched:" + document.getElementById('searchField_id').value);
-}
-
-function main() {
-    document.getElementById("test").innerHTML = "My First JavaScript";
 }

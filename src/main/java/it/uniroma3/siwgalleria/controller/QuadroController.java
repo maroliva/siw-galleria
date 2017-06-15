@@ -26,7 +26,7 @@ public class QuadroController {
     public String mostraQuadro(@Valid Quadro quadro, BindingResult bindingResult){
         if(bindingResult.hasErrors())
             return "inserimentoQuadro";
-        //save del quadro del DB
+        //save del quadro nel DB
         //fare eventualmente una redirect del mostraDati
         return "mostraQuadro";
     }
