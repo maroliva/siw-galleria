@@ -35,7 +35,7 @@ function loadImages() {
  * @param imageId
  */
 function onImageClicked(imageId) {
-    
+
 }
 
 function onSearch() {

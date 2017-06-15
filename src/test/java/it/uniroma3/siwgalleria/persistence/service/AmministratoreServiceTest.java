@@ -1,7 +1,6 @@
 package it.uniroma3.siwgalleria.persistence.service;
 
 import it.uniroma3.siwgalleria.domain.Amministratore;
-import it.uniroma3.siwgalleria.persistence.serivce.AmministratoreService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
