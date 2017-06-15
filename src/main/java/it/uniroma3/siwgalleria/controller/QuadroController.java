@@ -12,10 +12,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.annotation.RequestParam;
 import javax.validation.Valid;
-import java.util.ArrayList;
 
 /**
  * Created by jerongeorge on 09/06/17.
@@ -40,18 +38,16 @@ public class QuadroController {
     }
 
     @PostMapping("/inserisciQuadro")
-    public String mostraQuadro(@Valid Quadro quadro, BindingResult bindingResult, HttpServletRequest request, Model model){
+    public String mostraQuadro(@Valid Quadro quadro, BindingResult bindingResult, @RequestParam long autore,@RequestParam long tecnica, Model model){
         if(bindingResult.hasErrors()) {
             model.addAttribute("autori", autoreService.findAll());
             model.addAttribute("tecniche", tecnicaService.findAll());
             return "inserimentoQuadro";
         }
-        int idAutore=Integer.parseInt(request.getParameter("autore"));
-        Autore autore=autoreService.findById(idAutore);
-        quadro.setAutore(autore);
-        int idTecnica=Integer.parseInt(request.getParameter("tecnica"));
-        Tecnica tecnica=tecnicaService.findOne(idTecnica);
-        quadro.setTecnica(tecnica);
+        Autore a=autoreService.findById(autore);
+        quadro.setAutore(a);
+        Tecnica t=tecnicaService.findOne(tecnica);
+        quadro.setTecnica(t);
         quadroService.save(quadro);
         return "mostraQuadro";
     }

@@ -15,10 +15,6 @@ public class TecnicaService {
     @Autowired
     private TecnicaRepository tecnicaRepository;
 
-    public Tecnica save(Tecnica tecnica){
-        return tecnicaRepository.save(tecnica);
-    }
-
     public List<Tecnica> findAll(){
         return tecnicaRepository.findAll();
     }
