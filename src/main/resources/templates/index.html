@@ -11,7 +11,11 @@
     <link href="css/thumbnail-gallery.css" rel="stylesheet"/>
     <link href="css/searchbar.css" rel="stylesheet"/>
 
-    <script type="text/javascript" th:src="@{main.js }"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+    <script type="text/javascript" th:src="@{js/main.js }"></script>
 </head>
 
 
@@ -133,12 +137,32 @@
 </div>
 <!-- /.container -->
 
-<!-- Bootstrap Core JavaScript -->
-<script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
-<script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
 
 
 
+<script>
+    $('#myModal').on('show.bs.modal', function(e) {
+
+        var $modal = $(this),
+            esseyId = e.relatedTarget.id;
+
+//            $.ajax({
+//                cache: false,
+//                type: 'POST',
+//                url: 'backend.php',
+//                data: 'EID='+essay_id,
+//                success: function(data)
+//                {
+        $modal.find('.edit-content').html(esseyId);
+//                }
+//            });
+
+    })
+</script>
+
+<script>
+    loadGallery();
+</script>
 </body>
 
 

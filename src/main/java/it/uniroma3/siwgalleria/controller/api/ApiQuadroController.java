@@ -5,6 +5,7 @@ import it.uniroma3.siwgalleria.persistence.service.QuadroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -21,7 +22,11 @@ public class ApiQuadroController {
     @ResponseBody
     public List<Quadro> getQuadri() {
 
-        service.addQuadroTest();
+        try {
+            service.addQuadroTest();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         return service.findAll();
     }

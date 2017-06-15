@@ -20,6 +20,9 @@ public class Quadro {
     @OneToOne
     private Tecnica tecnica;
 
+    @Lob
+    private byte[] picture;
+
     public Quadro(){}
 
     public long getId() {
@@ -76,5 +79,13 @@ public class Quadro {
 
     public void setAutore(Autore autore) {
         this.autore = autore;
+    }
+
+    public byte[] getPicture() {
+        return picture;
+    }
+
+    public void setPicture(byte[] picture) {
+        this.picture = picture;
     }
 }
