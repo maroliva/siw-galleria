@@ -17,7 +17,7 @@ function loadGallery() {
                 $gallery.append('' +
                     '<div class="col-lg-3 col-md-4 col-xs-6 thumb">' +
                     '<a class="thumbnail" role="button" href="#myModal" data-toggle="modal" id="'+ v.id +'">' +
-                    '<img class="img-responsive" src="/pictures/'+v.id+'" alt=""/>' +
+                    '<img class="img-responsive" src="'+v.pictureUrl+'" alt=""/>' +
                     '</a>' +
                     '</div>');
             })

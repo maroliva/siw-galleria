@@ -20,8 +20,7 @@ public class Quadro {
     @OneToOne
     private Tecnica tecnica;
 
-    @Lob
-    private byte[] picture;
+    private String pictureUrl;
 
     public Quadro(){}
 
@@ -81,11 +80,11 @@ public class Quadro {
         this.autore = autore;
     }
 
-    public byte[] getPicture() {
-        return picture;
+    public String getPictureUrl() {
+        return pictureUrl;
     }
 
-    public void setPicture(byte[] picture) {
-        this.picture = picture;
+    public void setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
     }
 }
