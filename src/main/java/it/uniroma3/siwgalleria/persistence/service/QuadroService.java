@@ -85,7 +85,18 @@ public class QuadroService implements ServletContextAware{
             Autore autore = autoreRepository.findByNome(part);
             Tecnica tecnica = tecnicaRepository.findByNome(part);
 
+            if (autore == null && tecnica != null) {
+                out.addAll(quadroRepository.findByNomeOrTecnica(part, tecnica));
+            }
+            if (tecnica == null && autore != null) {
+                out.addAll(quadroRepository.findByNomeOrAutore(part, autore));
+            }
+            if (tecnica == null && autore == null) {
+                out.addAll(quadroRepository.findByNome(part));
+            }
+
             out.addAll(quadroRepository.findByNomeOrTecnicaOrAutore(part,tecnica,autore));
+            
         }
 
         return out;
