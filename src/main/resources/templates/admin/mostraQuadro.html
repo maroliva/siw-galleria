@@ -11,6 +11,7 @@
     <h1>Quadro inserito:</h1>
     <br/>
     <div class="list-group">
+        <img align="center" class="list-group-item" th:src="@{/pictures/{id}(id=${quadro.id})}" alt="img quadro"/>
         <a class="list-group-item">Nome: <b th:text="${quadro.nome}"></b></a>
         <a class="list-group-item">Anno: <b th:text="${quadro.anno}"></b></a>
         <a class="list-group-item">Altezza: <b th:text="${quadro.altezza}"></b></a>

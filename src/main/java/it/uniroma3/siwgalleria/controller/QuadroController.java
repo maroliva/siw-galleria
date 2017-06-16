@@ -60,7 +60,7 @@ public class QuadroController {
     }
 
     @PostMapping("/update")
-    public String quadroModificato(@Valid Quadro quadro, BindingResult bindingResult, @RequestParam long autore, @RequestParam long tecnica, Model model){
+    public String quadroModificato(@RequestParam("file") MultipartFile file, @Valid Quadro quadro, BindingResult bindingResult, @RequestParam long autore, @RequestParam long tecnica, Model model){
         if(bindingResult.hasErrors()) {
             model.addAttribute("autori", autoreService.findAll());
             model.addAttribute("tecniche", tecnicaService.findAll());
@@ -70,7 +70,7 @@ public class QuadroController {
         quadro.setAutore(a);
         Tecnica t=tecnicaService.findOne(tecnica);
         quadro.setTecnica(t);
-        quadroService.save(quadro);
+        quadroService.save(quadro,file);
         model.addAttribute("quadri",quadroService.findAll());
         return "admin/welcome";
     }
