@@ -38,6 +38,9 @@ public class QuadroService implements ServletContextAware{
 
     private ServletContext servletContext;
 
+    public void delete(long id){
+        quadroRepository.delete(id);
+    }
     public Quadro save(Quadro quadro){
         return quadroRepository.save(quadro);
     }

@@ -8,9 +8,9 @@
 </head>
 <body>
 <div class="container">
-    <h2>Inserimento dati quadro</h2>
+    <h2>Modifica quadro</h2>
     <br/>
-    <form action="#" th:action="@{/painting/inserisciQuadro}" th:object="${quadro}" method="post">
+    <form action="#" th:action="@{/painting/update}" th:object="${quadro}" method="post">
         <div class="form-group col-sm-12">
             <label class="col-sm-2 control-label">Nome Quadro:</label>
             <div class="col-sm-8">
@@ -57,6 +57,7 @@
             </div>
             <div class="col-sm-2"></div>
         </div>
+        <input type="hidden" name="id" th:field="*{id}" th:value="${quadro.id}"/>
         <div class="form-group col-sm-12">
             <div class="col-sm-offset-2 col-sm-1">
                 <input class="btn btn-primary" type="submit" value="Invia"/></div>

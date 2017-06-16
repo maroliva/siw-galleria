@@ -1,13 +1,59 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <title>Admin home</title>
+    <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+    <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
 </head>
 <body>
-<h1>welcome page</h1>
-<div>
-    Inserisci un quadro: <a th:href="@{/painting/inserisciQuadro}">Inserisci quadro</a>
+<div class="container">
+    <h1 align="center">Benvenuto!</h1>
+    <br/>
+    <div class="row">
+        <div align="center" class="list-group">
+            <a th:href="@{/painting/save}" class="list-group-item">Inserisci un quadro</a>
+        </div>
+    </div>
+    <div class="row">
+        <div align="center">
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" class="btn btn-primary" value="Logout"/>
+            </form>
+        </div>
+    </div>
+    <h3>Lista di quadri</h3>
+    <br/>
+    <div class="row">
+        <table class="table table-striped">
+            <tr>
+                <th>Nome:</th>
+                <th>Anno:</th>
+                <th>Altezza:</th>
+                <th>Larghezza:</th>
+                <th>Modifica:</th>
+                <th>Cancella:</th>
+            </tr>
+            <tr th:each="quadro : ${quadri}">
+                <td th:text="${quadro.nome}"></td>
+                <td th:text="${quadro.anno}"></td>
+                <td th:text="${quadro.altezza}"></td>
+                <td th:text="${quadro.larghezza}"></td>
+                <td>
+                    <a th:href="@{/painting/update/{id}(id=${quadro.id})}">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{/painting/delete/{id}(id=${quadro.id})}">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
 </body>
 </html>

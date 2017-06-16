@@ -4,7 +4,6 @@ import it.uniroma3.siwgalleria.domain.Autore;
 import it.uniroma3.siwgalleria.persistence.repository.AutoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 /**
@@ -28,4 +27,6 @@ public class AutoreService {
     public List<Autore> findAll(){
         return autoreRepository.findAll();
     }
+
+    public AutoreService() {}
 }

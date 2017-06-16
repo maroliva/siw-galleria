@@ -2,7 +2,6 @@ package it.uniroma3.siwgalleria.persistence.repository;
 
 import it.uniroma3.siwgalleria.domain.Autore;
 import org.springframework.data.repository.CrudRepository;
-
 import java.util.List;
 
 /**
