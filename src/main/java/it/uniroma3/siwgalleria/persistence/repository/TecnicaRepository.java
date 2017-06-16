@@ -10,6 +10,8 @@ import java.util.List;
 public interface TecnicaRepository extends CrudRepository<Tecnica,Long> {
 
     Tecnica save(Tecnica entity);
+
     List<Tecnica> findAll();
 
+    Tecnica findByNome(String nome);
 }

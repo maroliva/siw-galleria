@@ -17,4 +17,6 @@ public interface AutoreRepository  extends CrudRepository<Autore, Long> {
 
     Autore findById(long id);
 
+    Autore findByNome(String nome);
+
 }

@@ -20,6 +20,8 @@ public class Quadro {
     @OneToOne
     private Tecnica tecnica;
 
+    private String pictureUrl;
+
     public Quadro(){}
 
     public long getId() {
@@ -76,5 +78,13 @@ public class Quadro {
 
     public void setAutore(Autore autore) {
         this.autore = autore;
+    }
+
+    public String getPictureUrl() {
+        return pictureUrl;
+    }
+
+    public void setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
     }
 }
