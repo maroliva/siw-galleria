@@ -51,7 +51,8 @@ public class QuadroService implements ServletContextAware{
         saveImage(nameImage, file);
 
         quadroSaved.setPictureUrl("/pictures/" + nameImage);
-        return quadroSaved;
+        return quadroRepository.save(quadroSaved);
+
     }
 
 
