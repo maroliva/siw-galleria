@@ -2,7 +2,6 @@ package it.uniroma3.siwgalleria.persistence.repository;
 
 import it.uniroma3.siwgalleria.domain.Quadro;
 import org.springframework.data.repository.CrudRepository;
-
 import java.util.List;
 
 /**
@@ -17,5 +16,8 @@ public interface QuadroRepository extends CrudRepository<Quadro, Long> {
     void removeQuadroById(long id);
 
     Quadro findByNome(String nome);
+
+    Quadro findById(Long id);
+
 
 }

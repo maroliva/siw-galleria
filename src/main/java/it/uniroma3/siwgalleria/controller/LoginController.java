@@ -2,6 +2,7 @@ package it.uniroma3.siwgalleria.controller;
 
 import it.uniroma3.siwgalleria.domain.Amministratore;
 import it.uniroma3.siwgalleria.persistence.repository.AmministratoreRepository;
+import it.uniroma3.siwgalleria.persistence.service.QuadroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,8 @@ public class LoginController {
 
     @Autowired
     AmministratoreRepository repository;
+    @Autowired
+    QuadroService quadroService;
 
 
     @GetMapping("/login")
@@ -43,6 +46,7 @@ public class LoginController {
 
     @GetMapping("/welcome")
     public String welcome(Model model) {
+        model.addAttribute("quadri",quadroService.findAll());
         return "admin/welcome";
     }
 

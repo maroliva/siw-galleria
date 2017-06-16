@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 /**
@@ -29,26 +26,58 @@ public class QuadroController {
     @Autowired
     private TecnicaService tecnicaService;
 
-    @GetMapping("/inserisciQuadro")
+    @GetMapping("/save")
     public String formQuadro(Model model){
         model.addAttribute("autori", autoreService.findAll());
         model.addAttribute("tecniche", tecnicaService.findAll());
         model.addAttribute("quadro",new Quadro());
-        return "inserimentoQuadro";
+        return "admin/formSaveQuadro";
     }
-
-    @PostMapping("/inserisciQuadro")
-    public String mostraQuadro(@Valid Quadro quadro, BindingResult bindingResult, @RequestParam long autore,@RequestParam long tecnica, Model model){
+    @PostMapping("/save")
+    public String mostraQuadro(@Valid Quadro quadro, BindingResult bindingResult, @RequestParam long autore, @RequestParam long tecnica, Model model){
         if(bindingResult.hasErrors()) {
             model.addAttribute("autori", autoreService.findAll());
             model.addAttribute("tecniche", tecnicaService.findAll());
-            return "inserimentoQuadro";
+            return "admin/formSaveQuadro";
         }
         Autore a=autoreService.findById(autore);
         quadro.setAutore(a);
         Tecnica t=tecnicaService.findOne(tecnica);
         quadro.setTecnica(t);
         quadroService.save(quadro);
-        return "mostraQuadro";
+        return "admin/mostraQuadro";
+    }
+
+    @GetMapping("/update/{id}")
+    public String modificaQuadro(@PathVariable long id, Model model){
+        Quadro quadro=quadroService.findById(id);
+        model.addAttribute("quadro",quadro);
+        model.addAttribute("autori", autoreService.findAll());
+        model.addAttribute("tecniche", tecnicaService.findAll());
+        return "admin/formUpdateQuadro";
+    }
+
+    @PostMapping("/update")
+    public String quadroModificato(@Valid Quadro quadro, BindingResult bindingResult, @RequestParam long autore, @RequestParam long tecnica, Model model){
+        if(bindingResult.hasErrors()) {
+            model.addAttribute("autori", autoreService.findAll());
+            model.addAttribute("tecniche", tecnicaService.findAll());
+            return "admin/formUpdateQuadro";
+        }
+        Autore a=autoreService.findById(autore);
+        quadro.setAutore(a);
+        Tecnica t=tecnicaService.findOne(tecnica);
+        quadro.setTecnica(t);
+        quadroService.save(quadro);
+        model.addAttribute("quadri",quadroService.findAll());
+        return "admin/welcome";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String cancellaQuadro(@PathVariable long id, Model model){
+        Quadro quadro=quadroService.findById(id);
+        quadroService.delete(id);
+        model.addAttribute("quadri",quadroService.findAll());
+        return "admin/welcome";
     }
 }
