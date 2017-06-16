@@ -51,6 +51,30 @@ function clearGallery() {
 function onSearch() {
     console.log("Searched:" + document.getElementById('searchField_id').value);
     clearGallery();
+    var keys = document.getElementById('searchField_id').value;
+
+    var $gallery = $('#gallery_id');
+
+    jQuery.ajax({
+        url: "/api/search?key="+ keys.replace(/ /g,"+"),
+        type: "GET",
+        success: function(resultData) {
+            $.each(resultData, function (k,v) {
+                console.log("quadro:" + v.nome);
+                $gallery.append('' +
+                    '<div class="col-lg-3 col-md-4 col-xs-6 thumb">' +
+                    '<a class="thumbnail" role="button" href="#myModal" data-toggle="modal" id="'+ v.id +'">' +
+                    '<img class="img-responsive" src="'+v.pictureUrl+'" alt=""/>' +
+                    '</a>' +
+                    '</div>');
+            })
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log("ERRORE:" + textStatus);
+        },
+        timeout: 120000
+    });
+
 }
 
 

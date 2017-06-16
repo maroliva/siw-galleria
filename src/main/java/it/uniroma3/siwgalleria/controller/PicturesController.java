@@ -48,11 +48,6 @@ public class PicturesController implements ServletContextAware{
     }
 
 
-
-
-
-
-
     @Override
     public void setServletContext(ServletContext servletContext) {
         this.servletContext = servletContext;
