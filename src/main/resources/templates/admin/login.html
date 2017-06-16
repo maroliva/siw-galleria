@@ -2,6 +2,39 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
+    <meta charset="UTF-8"/>
+    <title>Login Form</title>
+    <link rel="stylesheet" href="/css/loginStyle.css"/>
+    <link href="/css/searchbar.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <div class="info">
+        <h1>Login Form</h1>
+    </div>
+    <div th:if="${param.error}">
+        Invalid username and password.
+    </div>
+    <div th:if="${param.logout}">
+        You have been logged out.
+    </div>
+</div>
+<div class="form" >
+    <div class="thumbnail"><img src="https://grup14.com/theme/g14/images/app/icon-account.png"/></div>
+    <form class="login-form" th:action="@{/admin/login}" method="post">
+        <input type="text" name="username" placeholder="username"/>
+        <input type="password" placeholder="password" name="password"/>
+        <button type="submit" value="Sign In">Login</button>
+    </form>
+</div>
+</body>
+</html>
+
+
+<!--<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
     <title>Login admin</title>
 </head>
 <body>
@@ -18,3 +51,5 @@
 </form>
 </body>
 </html>
+-->
+
