@@ -85,10 +85,38 @@ $(document).ready(function() {
     $('#myModal').on('show.bs.modal', function(e) {
 
         var $modal = $(this),
-            esseyId = e.relatedTarget.id;
+            quadroId = e.relatedTarget.id;
+        jQuery.ajax({
+            url: "/api/quadri/" + quadroId,
+            type: "GET",
+            success: function(resultData) {
+
+                var quadro = resultData;
+                console.log(quadro);
+
+                $modal.find('.immagine').html('<img class="img-responsive" src="'+ quadro.pictureUrl + '" alt=""/>');
+
+                $modal.find('.modal-title').html(quadro.nome);
+                $modal.find('.anno-realizzazione').html('Anno realizzazione: ' + quadro.anno);
+                $modal.find('.tecnica').html('Tecnica: ' + quadro.tecnica.nome);
+                $modal.find('.altezza').html('Altezza: ' + quadro.altezza);
+                $modal.find('.larghezza').html('Larghezza: ' + quadro.larghezza);
+                var autore = quadro.autore;
+                $modal.find('.nome-autore').html('Nome: ' + autore.nome);
+                $modal.find('.cognome-autore').html('Cognome: ' + autore.cognome);
+                $modal.find('.data-nascita').html('Nascita: '+ autore.dataDiNascita);
+                $modal.find('.data-morte').html('Morte: ' + autore.dataDiMorte);
+                var nazionalita = autore.nazione;
+                $modal.find('.nazionalita').html('Nazionalita: ' + nazionalita.nomeNazione);
 
 
-        $modal.find('.modal-body').html("<h1>"+esseyId+"</h1>");
+
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log("ERRORE:" + textStatus);
+            },
+            timeout: 120000
+        });
 
 
     })
