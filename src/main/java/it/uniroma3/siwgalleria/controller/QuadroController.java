@@ -29,15 +29,17 @@ public class QuadroController {
     private TecnicaService tecnicaService;
 
     @GetMapping("/save")
-    public String formQuadro(Model model){
+    public String inserisciQuadro(Model model){
         model.addAttribute("autori", autoreService.findAll());
         model.addAttribute("tecniche", tecnicaService.findAll());
         model.addAttribute("quadro",new Quadro());
         return "admin/formSaveQuadro";
     }
     @PostMapping("/save")
-    public String mostraQuadro(@RequestParam("file") MultipartFile file, @Valid Quadro quadro, BindingResult bindingResult, @RequestParam long autore, @RequestParam long tecnica, Model model){
-        if(bindingResult.hasErrors()) {
+    public String mostraQuadroInserito(@RequestParam("file") MultipartFile file, @Valid Quadro quadro, BindingResult bindingResult, @RequestParam long autore, @RequestParam long tecnica, Model model){
+        if(bindingResult.hasErrors() || file.isEmpty()) {
+            if(file.isEmpty())
+                model.addAttribute("imgNonInserita",true);
             model.addAttribute("autori", autoreService.findAll());
             model.addAttribute("tecniche", tecnicaService.findAll());
             return "admin/formSaveQuadro";
@@ -60,8 +62,10 @@ public class QuadroController {
     }
 
     @PostMapping("/update")
-    public String quadroModificato(@RequestParam("file") MultipartFile file, @Valid Quadro quadro, BindingResult bindingResult, @RequestParam long autore, @RequestParam long tecnica, Model model){
-        if(bindingResult.hasErrors()) {
+    public String mostraQuadroModificato(@RequestParam("file") MultipartFile file, @Valid Quadro quadro, BindingResult bindingResult, @RequestParam long autore, @RequestParam long tecnica, Model model){
+        if(bindingResult.hasErrors() || file.isEmpty()) {
+            if(file.isEmpty())
+                model.addAttribute("imgNonInserita",true);
             model.addAttribute("autori", autoreService.findAll());
             model.addAttribute("tecniche", tecnicaService.findAll());
             return "admin/formUpdateQuadro";

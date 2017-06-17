@@ -7,53 +7,52 @@
     <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
           rel="stylesheet" media="screen"/>
     <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+    <link href="/css/adminStyle.css" rel="stylesheet"/>
 </head>
 <body>
-<div class="container">
-    <h1 align="center">Benvenuto!</h1>
+<!-- First Container -->
+<div class="container-fluid bg-1 text-center">
+    <h2 class="margin">Benvenuto!</h2>
+    <h3>Questa è la sezione admin</h3>
+    <h4>In questa sezione puoi inserire nuovi quadri e gestire i quadri esistenti</h4>
+</div>
+<!-- Second Container -->
+<div class="container-fluid bg-2">
+    <h3>Gestione quadri</h3>
     <br/>
-    <div class="row">
-        <div align="center" class="list-group">
-            <a th:href="@{/painting/save}" class="list-group-item">Inserisci un quadro</a>
-        </div>
-    </div>
-    <div class="row">
-        <div align="center">
-            <form th:action="@{/logout}" method="post">
-                <input type="submit" class="btn btn-primary" value="Logout"/>
-            </form>
-        </div>
-    </div>
-    <h3>Lista di quadri</h3>
+    <a th:href="@{/painting/save}" class="btn btn-info btn-md">
+        Inserisci un quadro
+    </a>
     <br/>
-    <div class="row">
-        <table class="table table-striped">
-            <tr>
-                <th>Nome:</th>
-                <th>Anno:</th>
-                <th>Altezza:</th>
-                <th>Larghezza:</th>
-                <th>Modifica:</th>
-                <th>Cancella:</th>
-            </tr>
-            <tr th:each="quadro : ${quadri}">
-                <td th:text="${quadro.nome}"></td>
-                <td th:text="${quadro.anno}"></td>
-                <td th:text="${quadro.altezza}"></td>
-                <td th:text="${quadro.larghezza}"></td>
-                <td>
-                    <a th:href="@{/painting/update/{id}(id=${quadro.id})}">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                    </a>
-                </td>
-                <td>
-                    <a th:href="@{/painting/delete/{id}(id=${quadro.id})}">
-                        <span class="glyphicon glyphicon-remove"></span>
-                    </a>
-                </td>
-            </tr>
-        </table>
-    </div>
+    <br/>
+    <table class="table table-hover">
+        <tr>
+            <th>Nome:</th>
+            <th>Anno:</th>
+            <th>Autore:</th>
+            <th>Tecnica:</th>
+            <th>Modifica:</th>
+            <th>Cancella:</th>
+        </tr>
+        <tr th:each="quadro : ${quadri}">
+            <td th:text="${quadro.nome}"></td>
+            <td th:text="${quadro.anno}"></td>
+            <td th:text="${quadro.autore?.nome+' '+quadro.autore?.cognome}"></td>
+            <td th:text="${quadro.tecnica?.nome}"></td>
+            <td>
+                <a th:href="@{/painting/update/{id}(id=${quadro.id})}">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </a>
+            </td>
+            <td>
+                <a th:href="@{/painting/delete/{id}(id=${quadro.id})}">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            </td>
+        </tr>
+    </table>
 </div>
 </body>
 </html>
+
+

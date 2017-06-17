@@ -1,0 +1,21 @@
+body {
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.bg-1 {
+    background-color: #2196F3; /* Blue */
+    color: #ffffff;
+}
+.bg-2 {
+    background-color: #03A9F4; /*Light Blue*/
+    color: #ffffff;
+}
+.container-fluid {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+table{
+    background-color: #ffffff;
+    color: #000000;
+}
