@@ -1,0 +1,24 @@
+body {
+    padding-top: 50px; /* Required padding for .navbar-fixed-top. Per cambiare padding top in presenza della navbar usare
+    altro css oppure un tag <style> anziche modificare il valore di questo css. */
+}
+.nav-custom{
+    border: 0px;
+}
+
+.navbar-inverse .navbar-brand {
+    color:#ffffff;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color:#ffffff;
+}
+
+nav input.btn-custom{
+    margin-top: 8px;
+    background-color: #1976D2;
+    border:0px;
+}
+nav input.btn-custom:hover{
+    background-color: transparent;
+}

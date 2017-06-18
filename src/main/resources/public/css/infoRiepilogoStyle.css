@@ -1,0 +1,12 @@
+body {
+    background: #F0F0F0;
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding-top: 90px;
+}
+.marketing{
+    background: #ffffff;
+    padding-bottom: 30px;
+    border-radius: 5px;
+}

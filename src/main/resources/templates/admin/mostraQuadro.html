@@ -11,21 +11,23 @@
 </head>
 <body>
 <!--navbar-->
-<nav class="navbar navbar-light navbar-fixed-top" style="background-color: #1976D2;">
+<nav class="navbar navbar-inverse navbar-fixed-top nav-custom" style="background-color: #1976D2;">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" th:href="@{/}">Art Gallery</a>
         </div>
-        <ul class="nav navbar-nav">
-            <li><a th:href="@{/admin/welcome}">Home</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                <form th:action="@{/logout}" method="post">
-                    <input type="submit" class="btn btn-primary" value="Logout"/>
-                </form>
-            </li>
-        </ul>
+        <div  class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a th:href="@{/admin/welcome}">Home</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <form th:action="@{/logout}" method="post">
+                        <input type="submit" class="btn btn-primary btn-custom" value="Logout"/>
+                    </form>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
 <div class="container">
