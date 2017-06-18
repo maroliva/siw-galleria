@@ -4,11 +4,32 @@
     <meta charset="UTF-8"/>
     <title>Inserisci quadro</title>
     <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen" />
+    <link href="/css/blueNavbar.css" rel="stylesheet"/>
+    <link href="/css/formStyle.css" rel="stylesheet"/>
     <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
 </head>
 <body>
+<!--navbar-->
+<nav class="navbar navbar-light navbar-fixed-top" style="background-color: #1976D2;">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" th:href="@{/}">Art Gallery</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a th:href="@{/admin/welcome}">Home</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <form th:action="@{/logout}" method="post">
+                    <input type="submit" class="btn btn-primary" value="Logout"/>
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>
 <div class="container">
-    <h2>Inserimento dati quadro</h2>
+    <div class="row">
+    <h2 align="center">Inserimento dati quadro</h2>
     <br/>
     <form action="#" th:action="@{/painting/save}" th:object="${quadro}" enctype="multipart/form-data" method="post">
         <div class="form-group col-sm-12">
@@ -72,6 +93,7 @@
             </div>
         </div>
     </form>
+    </div>
 </div>
 </body>
 </html>

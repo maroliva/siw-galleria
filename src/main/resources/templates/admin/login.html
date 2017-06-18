@@ -4,18 +4,27 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Login Form</title>
+    <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+    <link href="/css/blueNavbar.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/css/loginStyle.css"/>
+    <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
 </head>
 <body>
-<div class="container">
-    <div class="info">
-        <h1>Login Form</h1>
+<!--navbar-->
+<nav class="navbar navbar-light navbar-fixed-top" style="background-color: #1976D2;">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand a-custom" th:href="@{/}">Art Gallery</a>
+        </div>
     </div>
+</nav>
+<div class="container">
     <div align="center" th:if="${param.error}">
-        Invalid username and password.
+        Invalid username or password
     </div>
     <div align="center" th:if="${param.logout}">
-        You have been logged out.
+        You have been logged out
     </div>
 </div>
 <div class="form" >

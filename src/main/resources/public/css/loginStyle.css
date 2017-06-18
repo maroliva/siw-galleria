@@ -23,6 +23,8 @@
   border-bottom-left-radius: 100%;
   border-bottom-right-radius: 100%;
   box-sizing: border-box;
+  border: 0px
+
 }
 .form .thumbnail img {
   display: block;
@@ -54,8 +56,6 @@
   border-bottom-right-radius: 3px;
   color: #FFFFFF;
   font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
   cursor: pointer;
 }
 
@@ -88,6 +88,7 @@ body {
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-top: 80px;
 }
 body:before {
   content: "";

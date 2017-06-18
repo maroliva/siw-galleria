@@ -5,41 +5,55 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
     <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
-    <style>
-        body {
-            background: #ffffff;
-            font-family: "Roboto", sans-serif;
-        }
-    </style>
+    <link href="/css/blueNavbar.css" rel="stylesheet"/>
+    <link href="/css/infoRiepilogoStyle.css" rel="stylesheet"/>
+
 </head>
 <body>
+<!--navbar-->
+<nav class="navbar navbar-light navbar-fixed-top" style="background-color: #1976D2;">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" th:href="@{/}">Art Gallery</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a th:href="@{/admin/welcome}">Home</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <form th:action="@{/logout}" method="post">
+                    <input type="submit" class="btn btn-primary" value="Logout"/>
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>
 <div class="container">
     <div class="container marketing">
-        <hr class="featurette-divider"/>
         <div class="row featurette">
             <div class="col-md-7">
                 <h2 class="featurette-heading">Operazione effettuata con successo
-                <div><span class="text-muted">Riepilogo</span></div>
+                    <div><span class="text-muted">Riepilogo</span></div>
                 </h2>
                 <div class="list-group">
                     <a class="list-group-item">Nome: <b th:text="${quadro.nome}"></b></a>
                     <a class="list-group-item">Anno: <b th:text="${quadro.anno}"></b></a>
                     <a class="list-group-item">Altezza: <b th:text="${quadro.altezza}"></b></a>
                     <a class="list-group-item">Larghezza: <b th:text="${quadro.larghezza}"></b></a>
-                    <a class="list-group-item">Autore: <b th:text="${quadro.autore.nome + ' ' +quadro.autore.cognome}"></b></a>
-                    <a class="list-group-item">Tecnica: <b th:text="${quadro.tecnica.nome}"></b></a>
+                    <a class="list-group-item">Autore: <b
+                            th:text="${quadro.autore.nome + ' ' +quadro.autore?.cognome}"></b></a>
+                    <a class="list-group-item">Tecnica: <b th:text="${quadro.tecnica?.nome}"></b></a>
                 </div>
             </div>
             <br/>
             <br/>
             <br/>
             <div class="col-md-5">
-                <img class="featurette-image img-responsive center-block img-rounded" th:src="@{/pictures/{id}(id=${quadro.id})}" alt="img quadro"/>
+                <img class="featurette-image img-responsive center-block img-rounded"
+                     th:src="@{/pictures/{id}(id=${quadro.id})}" alt="img quadro"/>
             </div>
         </div>
-        <hr class="featurette-divider"/>
     </div>
-    <a class="btn btn-primary" th:href="@{/admin/welcome}">Torna alla home dell'admin</a>
 </div>
 </body>
 </html>

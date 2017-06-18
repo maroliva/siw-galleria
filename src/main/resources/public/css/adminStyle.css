@@ -11,11 +11,13 @@ body {
     background-color: #03A9F4; /*Light Blue*/
     color: #ffffff;
 }
-.container-fluid {
+.container-custom {
     padding-top: 70px;
     padding-bottom: 70px;
 }
 table{
     background-color: #ffffff;
     color: #000000;
+    border-radius: 5px;
+
 }
