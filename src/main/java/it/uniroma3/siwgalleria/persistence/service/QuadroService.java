@@ -84,8 +84,10 @@ public class QuadroService implements ServletContextAware{
         Set<Quadro> outSet = new HashSet<>();
 
         for (String part: parts) {
-            //Cerco i quadri con questo autore
+            //Cerco i quadri con questo autore per nome o per cognome
             List<Autore> autori = autoreRepository.findByNomeIgnoreCaseContaining(part);
+            autori.addAll(autoreRepository.findByCognomeIgnoreCaseContaining(part));
+
             for (Autore autoreTrovato : autori) {
                 outSet.addAll(quadroRepository.findByAutore(autoreTrovato));
             }

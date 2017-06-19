@@ -1,6 +1,7 @@
 package it.uniroma3.siwgalleria.persistence.repository;
 
 import it.uniroma3.siwgalleria.domain.Autore;
+import it.uniroma3.siwgalleria.domain.Quadro;
 import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
@@ -18,5 +19,7 @@ public interface AutoreRepository  extends CrudRepository<Autore, Long> {
     Autore findById(long id);
 
     List<Autore> findByNomeIgnoreCaseContaining(String nome);
+
+    List<Autore> findByCognomeIgnoreCaseContaining(String cognome);
 
 }
