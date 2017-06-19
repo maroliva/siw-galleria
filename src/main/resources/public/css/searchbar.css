@@ -5,9 +5,13 @@
 .stylish-input-group .form-control{
     border-right:0;
     box-shadow:0 0 0;
-    border-color:#ccc;
+    border-color:#1976D2;
 }
 .stylish-input-group button{
     border:0;
     background:transparent;
+}
+
+.input-group-addon {
+    border: 1px solid #1976D2;
 }

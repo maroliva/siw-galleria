@@ -2,6 +2,7 @@ package it.uniroma3.siwgalleria.controller;
 
 import it.uniroma3.siwgalleria.domain.Amministratore;
 import it.uniroma3.siwgalleria.persistence.repository.AmministratoreRepository;
+import it.uniroma3.siwgalleria.persistence.service.AmministratoreService;
 import it.uniroma3.siwgalleria.persistence.service.QuadroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,18 +19,18 @@ public class LoginController {
 
 
     @Autowired
-    AmministratoreRepository repository;
+    AmministratoreService amministratoreService;
     @Autowired
     QuadroService quadroService;
 
 
     @GetMapping("/login")
     public String login(Model model, String error, String logout) {
-        if (repository.findByUsername("user") == null) {
+        if (amministratoreService.findByUsername("user") == null) {
             Amministratore admin = new Amministratore();
             admin.setUsername("user");
             admin.setPassword("pass");
-            repository.save(admin);
+            amministratoreService.save(admin);
         }
 
 
