@@ -2,6 +2,7 @@ body {
     font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #03A9F4; /*Light Blue*/
 }
 .bg-1 {
     background-color: #2196F3; /* Blue */
@@ -15,9 +16,8 @@ body {
     padding-top: 70px;
     padding-bottom: 70px;
 }
-table{
+.table-custom{
     background-color: #ffffff;
     color: #000000;
     border-radius: 5px;
-
 }
