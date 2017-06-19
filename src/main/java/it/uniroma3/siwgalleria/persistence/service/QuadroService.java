@@ -163,6 +163,8 @@ public class QuadroService implements ServletContextAware{
         Quadro quadro1 = new Quadro();
         quadro1.setNome("Test");
         quadro1.setAnno(10);
+        quadro1.setAltezza(1.0);
+        quadro1.setLarghezza(1.0);
         quadro1.setAutore(autore1);
         quadro1.setTecnica(tecnica1);
 
@@ -175,6 +177,8 @@ public class QuadroService implements ServletContextAware{
         Quadro quadro2 = new Quadro();
         quadro2.setNome("Prova");
         quadro2.setAnno(11);
+        quadro2.setAltezza(1.0);
+        quadro2.setLarghezza(1.0);
         quadro2.setAutore(autore2);
         quadro2.setTecnica(tecnica2);
 
