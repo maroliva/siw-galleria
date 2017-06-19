@@ -22,11 +22,11 @@ public class ApiQuadroController {
     @ResponseBody
     public List<Quadro> getQuadri() {
 
-        try {
+        /*try {
             service.addQuadriTest();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
         return service.findAll();
     }
