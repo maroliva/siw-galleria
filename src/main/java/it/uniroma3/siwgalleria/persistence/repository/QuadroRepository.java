@@ -25,10 +25,9 @@ public interface QuadroRepository extends CrudRepository<Quadro, Long> {
 
     Quadro findById(Long id);
 
-    List<Quadro> findByNomeOrTecnicaOrAutore(String nome, Tecnica tecnica, Autore autore);
+    List<Quadro> findByAutore(Autore autore);
 
-    List<Quadro> findByNomeOrTecnica(String nome, Tecnica tecnica);
+    List<Quadro> findByTecnica(Tecnica tecnica);
 
-    List<Quadro> findByNomeOrAutore(String nome, Autore autore);
 
 }

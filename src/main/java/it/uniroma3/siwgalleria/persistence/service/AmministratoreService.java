@@ -17,14 +17,6 @@ public class AmministratoreService {
     public AmministratoreService() {
     }
 
-    public boolean autentica(String user, String pwd) {
-        Amministratore fromUser = repository.findByUsername(user);
-
-        return (fromUser != null && fromUser.getPassword().equals(pwd));
-
-    }
-
-
     public Amministratore save(Amministratore entity) {
         return repository.save(entity);
     }

@@ -18,8 +18,10 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.ServletContext;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by marco on 08/06/2017.
@@ -77,28 +79,28 @@ public class QuadroService implements ServletContextAware{
 
 
     public List<Quadro> search(String allKeys) {
-        String[] parts = allKeys.split("\\+");
+        String[] parts = allKeys.split("\\s");
 
-        List<Quadro> out = new LinkedList<>();
+        Set<Quadro> outSet = new HashSet<>();
 
-        for (String part : parts) {
-            Autore autore = autoreRepository.findByNome(part);
-            Tecnica tecnica = tecnicaRepository.findByNome(part);
-
-            if (autore == null && tecnica != null) {
-                out.addAll(quadroRepository.findByNomeOrTecnica(part, tecnica));
-            }
-            if (tecnica == null && autore != null) {
-                out.addAll(quadroRepository.findByNomeOrAutore(part, autore));
-            }
-            if (tecnica == null && autore == null) {
-                out.addAll(quadroRepository.findByNome(part));
+        for (String part: parts) {
+            //Cerco i quadri con questo autore
+            List<Autore> autori = autoreRepository.findByNome(part);
+            for (Autore autoreTrovato : autori) {
+                outSet.addAll(quadroRepository.findByAutore(autoreTrovato));
             }
 
-            out.addAll(quadroRepository.findByNomeOrTecnicaOrAutore(part,tecnica,autore));
-            
+            //Cerco i quadri con questa tecnica
+            List<Tecnica> tecniche = tecnicaRepository.findByNome(part);
+            for (Tecnica tecnicaTrovata : tecniche) {
+                outSet.addAll(quadroRepository.findByTecnica(tecnicaTrovata));
+            }
+
+            //Cerco i quadri con questo nome
+            outSet.addAll(quadroRepository.findByNome(part));
         }
 
+        List<Quadro> out = new LinkedList<>(outSet);
         return out;
     }
 
@@ -124,29 +126,61 @@ public class QuadroService implements ServletContextAware{
 
     //TODO da levare
     @Value(value = "classpath:8d2b40fcc945bfa4505b172856f5a432.jpg")
-    private Resource imageTest;
+    private Resource imageTest1;
+
+    @Value(value = "classpath:index.jpg")
+    private Resource imageTest2;
+
 
     //TODO da levare
-    public void addQuadroTest() throws IOException {
+    public void addQuadriTest() throws IOException {
 
-        Quadro quadro = new Quadro();
-        quadro.setNome("Quadro Di Test");
-        quadro.setAnno(10);
+        Tecnica tecnica1 = new Tecnica();
+        tecnica1.setNome("tecnica1");
+        tecnica1.setDescrizione("tecnica1 descrizione");
 
-        Autore autore = new Autore();
-        autore.setNome("NomeTest");
-        autore.setCognome("CognomeTest");
+        Tecnica tecnica2 = new Tecnica();
+        tecnica2.setNome("tecnica2");
+        tecnica2.setDescrizione("tecnica2 descrizione");
 
-        if (autoreRepository.findByNome("NomeTest") == null)
-            autoreRepository.save(autore);
+        tecnica1 = tecnicaRepository.save(tecnica1);
+        tecnica2 = tecnicaRepository.save(tecnica2);
 
-        quadro.setAutore(autoreRepository.findByNome("NomeTest"));
+        Autore autore1 = new Autore();
+        autore1.setNome("Autore1");
+        autore1.setCognome("Congome autore1");
 
-        quadro = quadroRepository.save(quadro);
+        Autore autore2 = new Autore();
+        autore2.setNome("Autore2");
+        autore2.setCognome("Congome autore2");
 
-        String nameImage = String.valueOf(quadro.getId());
-        saveImage(nameImage, IOUtils.toByteArray(imageTest.getInputStream()));
+        autore1 = autoreRepository.save(autore1);
+        autore2 = autoreRepository.save(autore2);
 
-        quadro.setPictureUrl("/pictures/" + nameImage);
+
+        Quadro quadro1 = new Quadro();
+        quadro1.setNome("Test");
+        quadro1.setAnno(10);
+        quadro1.setAutore(autore1);
+        quadro1.setTecnica(tecnica1);
+
+        quadro1 = quadroRepository.save(quadro1);
+        String nameImage1 = String.valueOf(quadro1.getId());
+        saveImage(nameImage1, IOUtils.toByteArray(imageTest1.getInputStream()));
+        quadro1.setPictureUrl("/pictures/" + nameImage1);
+
+
+        Quadro quadro2 = new Quadro();
+        quadro2.setNome("Prova");
+        quadro2.setAnno(11);
+        quadro2.setAutore(autore2);
+        quadro2.setTecnica(tecnica2);
+
+        quadro2 = quadroRepository.save(quadro2);
+        String nameImage2 = String.valueOf(quadro2.getId());
+        saveImage(nameImage2, IOUtils.toByteArray(imageTest2.getInputStream()));
+        quadro2.setPictureUrl("/pictures/" + nameImage2);
     }
+
+
 }
