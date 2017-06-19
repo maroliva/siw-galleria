@@ -17,6 +17,6 @@ public interface AutoreRepository  extends CrudRepository<Autore, Long> {
 
     Autore findById(long id);
 
-    List<Autore> findByNome(String nome);
+    List<Autore> findByNomeIgnoreCaseContaining(String nome);
 
 }

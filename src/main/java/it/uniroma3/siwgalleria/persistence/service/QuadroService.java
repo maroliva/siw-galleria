@@ -85,19 +85,19 @@ public class QuadroService implements ServletContextAware{
 
         for (String part: parts) {
             //Cerco i quadri con questo autore
-            List<Autore> autori = autoreRepository.findByNome(part);
+            List<Autore> autori = autoreRepository.findByNomeIgnoreCaseContaining(part);
             for (Autore autoreTrovato : autori) {
                 outSet.addAll(quadroRepository.findByAutore(autoreTrovato));
             }
 
             //Cerco i quadri con questa tecnica
-            List<Tecnica> tecniche = tecnicaRepository.findByNome(part);
+            List<Tecnica> tecniche = tecnicaRepository.findByNomeIgnoreCaseContaining(part);
             for (Tecnica tecnicaTrovata : tecniche) {
                 outSet.addAll(quadroRepository.findByTecnica(tecnicaTrovata));
             }
 
             //Cerco i quadri con questo nome
-            outSet.addAll(quadroRepository.findByNome(part));
+            outSet.addAll(quadroRepository.findByNomeIgnoreCaseContaining(part));
         }
 
         List<Quadro> out = new LinkedList<>(outSet);

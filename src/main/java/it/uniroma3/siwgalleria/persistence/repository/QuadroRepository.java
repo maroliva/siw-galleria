@@ -21,7 +21,7 @@ public interface QuadroRepository extends CrudRepository<Quadro, Long> {
 
     void removeQuadroById(long id);
 
-    List<Quadro> findByNome(String nome);
+    List<Quadro> findByNomeIgnoreCaseContaining(String nome);
 
     Quadro findById(Long id);
 

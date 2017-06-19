@@ -2,8 +2,6 @@ package it.uniroma3.siwgalleria.persistence.repository;
 
 import it.uniroma3.siwgalleria.domain.Autore;
 import it.uniroma3.siwgalleria.domain.Quadro;
-import it.uniroma3.siwgalleria.persistence.repository.AutoreRepository;
-import it.uniroma3.siwgalleria.persistence.repository.QuadroRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +38,7 @@ public class QuadroRepositoryTest {
         quadro.setAutore(autore);
 
         quadroRepository.save(quadro);
-        assertNotNull(quadroRepository.findByNome("Quadro Di Test"));
+        assertNotNull(quadroRepository.findByNomeIgnoreCaseContaining("Quadro Di Test"));
     }
 
 
@@ -56,7 +54,7 @@ public class QuadroRepositoryTest {
         quadro.setAutore(autore);
         quadroRepository.save(quadro);
 
-        assertNotNull(quadroRepository.findByNome("testCascade"));
+        assertNotNull(quadroRepository.findByNomeIgnoreCaseContaining("testCascade"));
     }
 
 
