@@ -3,11 +3,11 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8"/>
-    <title>Login Form</title>
+    <title>Login form</title>
     <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
           rel="stylesheet" media="screen"/>
     <link href="/css/blueNavbar.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="/css/loginStyle.css"/>
+    <link href="/css/loginStyle.css" rel="stylesheet"/>
     <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
 </head>
 <body>
@@ -19,6 +19,7 @@
         </div>
     </div>
 </nav>
+<!--Titolo e messaggi di info-->
 <div class="container">
     <h2 align="center">Login</h2>
     <div align="center" th:if="${param.error}">
@@ -28,6 +29,7 @@
         You have been logged out
     </div>
 </div>
+<!--Form-->
 <div class="form" >
     <div class="thumbnail"><img src="http://s.apptoko.com/a//uploads/thumbnails/022015/kk-contacts-lollipop-contact_icon.png"/></div>
     <form class="login-form" th:action="@{/admin/login}" method="post">

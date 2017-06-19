@@ -1,4 +1,5 @@
 package it.uniroma3.siwgalleria.domain;
+import it.uniroma3.siwgalleria.validator.SizeValidation;
 import org.hibernate.validator.constraints.NotBlank;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -8,12 +9,14 @@ public class Quadro {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
-    @NotBlank
+    @NotBlank(message = "Inserire una stringa non nulla e non vuota")
     @Column(nullable=false)
     private String nome;
-    @Min(1) //valutare poi se cambiare il valore di @Min
+    @Min(value = 1, message = "Inserire un valore maggiore di 0")
     private int anno;
+    @SizeValidation
     private double altezza;
+    @SizeValidation
     private double larghezza;
     @ManyToOne
     private Autore autore;

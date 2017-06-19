@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8"/>
-    <title>Inserisci quadro</title>
-    <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen" />
+    <title>Modifica quadro</title>
+    <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
     <link href="/css/blueNavbar.css" rel="stylesheet"/>
     <link href="/css/formStyle.css" rel="stylesheet"/>
     <script th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
@@ -15,7 +15,7 @@
         <div class="navbar-header">
             <a class="navbar-brand" th:href="@{/}">Art Gallery</a>
         </div>
-        <div  class="navbar-collapse collapse">
+        <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a th:href="@{/admin/welcome}">Home</a></li>
             </ul>
@@ -29,74 +29,90 @@
         </div>
     </div>
 </nav>
-<div class="container">
-    <div class="row">
+<!--form-->
+<div class="container container-custom">
     <h2 align="center">Modifica quadro</h2>
     <br/>
-    <form action="#" th:action="@{/painting/update}" th:object="${quadro}" enctype="multipart/form-data" method="post">
-        <div class="form-group col-sm-12">
-            <label class="col-sm-2 control-label">Nome Quadro:</label>
-            <div class="col-sm-8">
-                <input class="form-control" type="text" name="nome" th:field="*{nome}" />
+    <form action="#" th:action="@{/painting/update}" th:object="${quadro}" enctype="multipart/form-data"
+          method="post">
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <label class="col-sm-2 control-label">Nome Quadro:</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" name="nome" th:field="*{nome}"/>
+                </div>
+                <div class="col-sm-2" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Error nome</div>
             </div>
-            <div class="col-sm-2" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Error nome</div>
         </div>
-        <div class="form-group col-sm-12">
-            <label class="col-sm-2 control-label">Anno di realizzazione:</label>
-            <div class="col-sm-8">
-                <input class="form-control" type="text" name="anno" th:field="*{anno}" />
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <label class="col-sm-2 control-label">Anno di realizzazione:</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" name="anno" th:field="*{anno}"/>
+                </div>
+                <div class="col-sm-2" th:if="${#fields.hasErrors('anno')}" th:errors="*{anno}">Error anno</div>
             </div>
-            <div class="col-sm-2" th:if="${#fields.hasErrors('anno')}" th:errors="*{anno}">Error anno</div>
         </div>
-        <div class="form-group col-sm-12">
-            <label class="col-sm-2 control-label">Altezza quadro(cm):</label>
-            <div class="col-sm-8">
-                <input class="form-control" type="text" name="altezza" th:field="*{altezza}" />
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <label class="col-sm-2 control-label">Altezza quadro(cm):</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" name="altezza" th:field="*{altezza}"/>
+                </div>
+                <div class="col-sm-2" th:if="${#fields.hasErrors('altezza')}" th:errors="*{altezza}">Error altezza</div>
             </div>
-            <div class="col-sm-2" th:if="${#fields.hasErrors('altezza')}" th:errors="*{altezza}">Error altezza</div>
         </div>
-        <div class="form-group col-sm-12">
-            <label class="col-sm-2 control-label">Larghezza quadro(cm):</label>
-            <div class="col-sm-8">
-                <input class="form-control" type="text" name="larghezza" th:field="*{larghezza}" />
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <label class="col-sm-2 control-label">Larghezza quadro(cm):</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" name="larghezza" th:field="*{larghezza}"/>
+                </div>
+                <div class="col-sm-2" th:if="${#fields.hasErrors('larghezza')}" th:errors="*{larghezza}">Error
+                    larghezza
+                </div>
             </div>
-            <div class="col-sm-2" th:if="${#fields.hasErrors('larghezza')}" th:errors="*{larghezza}">Error larghezza</div>
         </div>
-        <div class="form-group col-sm-12">
-            <label class="col-sm-2 control-label">Autori:</label>
-            <div class="col-sm-8">
-                <select th:field="*{autore}" class="form-control" name="autore">
-                    <option th:each="autore : ${autori}" th:value="${autore.id}" th:text="${autore.nome + ' ' + autore.cognome}"></option>
-                </select>
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <label class="col-sm-2 control-label">Autori:</label>
+                <div class="col-sm-8">
+                    <select th:field="*{autore}" class="form-control" name="autore">
+                        <option th:each="autore : ${autori}" th:value="${autore.id}"
+                                th:text="${autore.nome + ' ' + autore.cognome}"></option>
+                    </select>
+                </div>
+                <div class="col-sm-2"></div>
             </div>
-            <div class="col-sm-2"></div>
         </div>
-        <div class="form-group col-sm-12">
-            <label class="col-sm-2 control-label">Tecniche:</label>
-            <div class="col-sm-8">
-                <select th:field="*{tecnica}" class="form-control" name="tecnica">
-                    <option th:each="tecnica : ${tecniche}" th:value="${tecnica.id}" th:text="${tecnica.nome}"></option>
-                </select>
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <label class="col-sm-2 control-label">Tecniche:</label>
+                <div class="col-sm-8">
+                    <select th:field="*{tecnica}" class="form-control" name="tecnica">
+                        <option th:each="tecnica : ${tecniche}" th:value="${tecnica.id}"
+                                th:text="${tecnica.nome}"></option>
+                    </select>
+                </div>
+                <div class="col-sm-2"></div>
             </div>
-            <div class="col-sm-2"></div>
         </div>
-        <input type="hidden" name="id" th:field="*{id}" th:value="${quadro.id}"/>
-        <div class="form-group col-sm-12">
-            <label class="col-sm-2 control-label">Carica una immagine (400x300):</label>
-            <div class="col-sm-8">
-                <input type="file" name="file"/>
+        <div class="row">
+            <input type="hidden" name="id" th:field="*{id}" th:value="${quadro.id}"/>
+            <div class="form-group col-sm-12">
+                <label class="col-sm-2 control-label">Carica una immagine (400x300):</label>
+                <div class="col-sm-8">
+                    <input type="file" name="file"/>
+                </div>
+                <div class="col-sm-2" th:if="${imgNonInserita}">Mandatory field</div>
             </div>
-            <div class="col-sm-2" th:if="${imgNonInserita}">Mandatory field</div>
         </div>
-        <div class="form-group col-sm-12">
-            <div class="col-sm-offset-2 col-sm-1">
-                <input class="btn btn-primary" type="submit" value="Invia"/></div>
-            <div class="col-sm-1">
-                <input class="btn btn-default" type="reset" value="Reimposta"/>
+        <div class="row" align="center">
+            <div class="form-group col-sm-12">
+                <input class="btn btn-primary" type="submit" value="Invia"/>
             </div>
         </div>
     </form>
-    </div>
 </div>
 </body>
 </html>
