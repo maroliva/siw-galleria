@@ -26,12 +26,4 @@ public class HomeController {
         return "home";
     }
 
-
-
-
-    @GetMapping("favicon.ico")
-    public String favicon() {
-
-    }
-
 }
