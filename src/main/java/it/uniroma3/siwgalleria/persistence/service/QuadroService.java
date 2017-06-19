@@ -112,6 +112,8 @@ public class QuadroService implements ServletContextAware{
         this.servletContext = servletContext;
     }
 
+
+
     //TODO da levare
     private void saveImage(String filename, byte[] image) {
         File file = new File(servletContext.getRealPath("/") + "/pictures/"
