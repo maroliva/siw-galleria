@@ -13,5 +13,5 @@ public interface TecnicaRepository extends CrudRepository<Tecnica,Long> {
 
     List<Tecnica> findAll();
 
-    Tecnica findByNome(String nome);
+    List<Tecnica> findByNomeIgnoreCaseContaining(String nome);
 }

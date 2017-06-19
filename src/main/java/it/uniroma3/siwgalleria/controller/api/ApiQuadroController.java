@@ -23,7 +23,7 @@ public class ApiQuadroController {
     public List<Quadro> getQuadri() {
 
         try {
-            service.addQuadroTest();
+            service.addQuadriTest();
         } catch (IOException e) {
             e.printStackTrace();
         }
