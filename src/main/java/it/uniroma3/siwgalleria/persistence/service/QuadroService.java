@@ -76,7 +76,16 @@ public class QuadroService implements ServletContextAware{
                 + filename + ".jpg");
 
         try {
-            FileUtils.writeByteArrayToFile(file, image.getBytes());
+
+          InputStream in = new ByteArrayInputStream(image.getBytes());
+          BufferedImage bufferedImage = ImageIO.read(in);
+
+          ImageScaler scaler = new ImageScaler();
+          BufferedImage out = scaler.scaleAndAddBackground(bufferedImage);
+                    
+          ImageIO.write(out, "jpg", file);
+
+            //FileUtils.writeByteArrayToFile(file, image.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
