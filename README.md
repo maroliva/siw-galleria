@@ -62,6 +62,6 @@ Tecnologie utilizzate:
 * Autenticazione con Spring Security
 * JPA framework per la persistenza 
 * Utilizzo di Thymeleaf template engine
-* Deploy su AWS EC2
+* Deploy su AWS EC2 (34.211.140.78:8080 -Credenziali: username:user, password: pass)
 * Salvataggio dei dati su AWS RDS (PostgresSQL database engine)
 * Utilizzo di Javascript e Ajax e di controller REST per mostrare i quadri nella index
