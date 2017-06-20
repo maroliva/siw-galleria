@@ -3,6 +3,7 @@ package it.uniroma3.siwgalleria.persistence.service;
 import it.uniroma3.siwgalleria.domain.Autore;
 import it.uniroma3.siwgalleria.domain.Quadro;
 import it.uniroma3.siwgalleria.domain.Tecnica;
+import it.uniroma3.siwgalleria.libraries.ImageScaler;
 import it.uniroma3.siwgalleria.persistence.repository.AutoreRepository;
 import it.uniroma3.siwgalleria.persistence.repository.QuadroRepository;
 import it.uniroma3.siwgalleria.persistence.repository.TecnicaRepository;
@@ -15,9 +16,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -122,7 +127,15 @@ public class QuadroService implements ServletContextAware{
                 + filename + ".jpg");
 
         try {
-            FileUtils.writeByteArrayToFile(file, image);
+            // convert byte array back to BufferedImage
+            InputStream in = new ByteArrayInputStream(image);
+            BufferedImage bufferedImage = ImageIO.read(in);
+
+            ImageScaler scaler = new ImageScaler();
+            BufferedImage out = scaler.scaleAndAddBackground(bufferedImage);
+            ImageIO.write(out, "jpg", file);
+
+//            FileUtils.writeByteArrayToFile(file, image);
         } catch (IOException e) {
             e.printStackTrace();
         }
